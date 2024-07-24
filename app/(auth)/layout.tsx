@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
-import Signin from "./sign-in/page";
-import Signup from "./sign-up/page";
+
 
 const Layout = ({ children }: { children: ReactNode }) => {
   return (
