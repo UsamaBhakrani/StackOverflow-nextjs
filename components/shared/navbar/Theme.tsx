@@ -9,14 +9,32 @@ import {
   MenubarShortcut,
   MenubarTrigger,
 } from "@/components/ui/menubar";
+import Image from "next/image";
 
 const Theme = () => {
   const { mode, setMode } = useTheme();
-
   return (
-    <Menubar>
+    <Menubar className="relative border-none bg-transparent shadow-none">
       <MenubarMenu>
-        <MenubarTrigger>File</MenubarTrigger>
+        <MenubarTrigger>
+          {mode === "light" ? (
+            <Image
+              src="/assets/icons/sun.svg"
+              alt="Sun"
+              width={20}
+              height={20}
+              className="active-theme"
+            />
+          ) : (
+            <Image
+              className="active-theme"
+              src="/assets/icons/moon.svg"
+              alt="moon"
+              width={20}
+              height={20}
+            />
+          )}
+        </MenubarTrigger>
         <MenubarContent>
           <MenubarItem>
             New Tab <MenubarShortcut>⌘T</MenubarShortcut>

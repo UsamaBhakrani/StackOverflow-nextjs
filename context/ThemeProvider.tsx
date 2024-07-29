@@ -16,7 +16,7 @@ interface ThemeContextProps {
 const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const [mode, setMode] = useState("");
+  const [mode, setMode] = useState('light');
 
   const handleThemeChange = () => {
     if (mode === "dark") {
@@ -30,7 +30,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     handleThemeChange();
-  }, [mode]);
+  }, []);
 
   return (
     <ThemeContext.Provider value={{ mode, setMode }}>
