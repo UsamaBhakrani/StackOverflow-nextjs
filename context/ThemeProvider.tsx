@@ -16,21 +16,25 @@ interface ThemeContextProps {
 const ThemeContext = createContext<ThemeContextProps | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const [mode, setMode] = useState('light');
+  const [mode, setMode] = useState("light");
 
   const handleThemeChange = () => {
-    if (mode === "dark") {
-      setMode("light");
-      document.documentElement.classList.add("light");
-    } else {
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("prefers-color-scheme:dark").matches)
+    ) {
       setMode("dark");
+      document.documentElement.classList.add("dark");
+    } else {
+      setMode("light");
       document.documentElement.classList.remove("dark");
     }
   };
 
   useEffect(() => {
     handleThemeChange();
-  }, []);
+  }, [mode]);
 
   return (
     <ThemeContext.Provider value={{ mode, setMode }}>
