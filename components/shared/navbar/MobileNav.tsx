@@ -9,10 +9,8 @@ import { SignedOut } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 
-import React from "react";
-
 export const NavContent = () => {
-  return <div>NavContent</div>;
+  return <section className="flex h-full flex-col gap-6 pt-16"></section>;
 };
 
 const MobileNav = () => {
